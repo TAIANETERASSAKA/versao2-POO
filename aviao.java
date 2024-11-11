@@ -55,6 +55,17 @@ public class aviao{
            System.out.println("Usuário sem permissão para realizar operação");
         }
     }
+        
+    public void setRelatorioAviao(){
+        System.out.println("Id avião: " + this.getId());
+        System.out.println("Informacões do avião: ");
+        System.out.println("Modelo: " + this.getModelo());
+        System.out.println("Ano de fabricacão: " + this.getAno());
+        System.out.println("Capacidade de passageiros: " + this.getCapacidade());
+        System.out.println("Status: " + this.getAtivo());
+    }
+    
+    
     
     //métodos getters
     public int getId(){
@@ -76,6 +87,7 @@ public class aviao{
     public int getCapacidade(){
         return capacidade_passageiros;
     }
+
     
     //metodos abstratos
     
