@@ -17,6 +17,14 @@ public class funcionario extends usuario{
         this.tarefa = tarefa;
     }
     
+    public void setRelatorioFuncionario(){
+        System.out.println("Nome: " + this.getNome() );
+        System.out.println("CPF: " + this.getCPF());
+        System.out.println("Email: " + this.getEmail());
+        System.out.println("Tarefa: " + this.getTarefa());
+        System.out.println("Permissão: " + this.getPermissao());
+    }
+    
     
     public String getTarefa(){
         return tarefa;
