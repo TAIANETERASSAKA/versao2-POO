@@ -91,10 +91,19 @@ public class voos{
     }
     
     public void setStatus(String status){
-
-            this.status = status;
-
-
+        this.status = status;
+    }
+    
+    public void setRelatorioVoos(){
+        System.out.println("Id voo: " + this.getId() );
+        System.out.println("Informacões do voo: ");
+        System.out.println("Origem: " + this.getOrigem());
+        System.out.println("Destino: " + this.getDestino());
+        System.out.println("Data saída: " + this.getTime_saida());
+        System.out.println("Data chegada: " + this.getTime_chegada());
+        System.out.println("Preço base da passagem: " + this.getPreco_passagem());
+        System.out.println("Status: " + this.getStatus());
+        System.out.println("Ativo: " + this.getAtivo());
     }
     
     //métodos getters
