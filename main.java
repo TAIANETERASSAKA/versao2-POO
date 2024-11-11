@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class Main {
   public static void main(String[] args) {
       int tipoUsuario, respostaTipoAcao, gerenteOUcliente;
-      String nome, email;
-      long cpf;
+      String nome = "Taiane", email= "taiane@usp.br";
+      long cpf= 451813848;
       Scanner ler = new Scanner(System.in);
       
       do{
@@ -19,7 +19,12 @@ public class Main {
                 respostaTipoUsuario = ler.nextInt();
                 
                 
-                if (respostaTipoUsuario == 1 || respostaTipoUsuario == 3){
+                if (respostaTipoUsuario == 1){
+                    gerente g = new gerente(cpf, email, nome, respostaTipoUsuario);
+                    
+                    int respostaGerente;
+                    do{
+                        
                     System.out.println("MENU");
                     System.out.println("1: Cadastrar avião");
                     System.out.println("2: Alterar dados do avião");
@@ -29,129 +34,75 @@ public class Main {
                     System.out.println("6: Excluir voo");
                     System.out.println("7: Gerenciar funcionario");
                     System.out.println("8: Gerar Relatórios");
-                    
-                    int respostaGerente = ler.nextInt();
-                    
-                    if(respostaGerente == 1 ){
-                        int id_aviao, ano_aviao, capacidade_aviao_passageiros;
-                        String modelo_aviao;
-                        
-                        
-                         System.out.println("Cadastro de  avião");
-                         System.out.println("Informe o id do avião");
-                         id_aviao = ler.nextInt();
-                         System.out.println("Informe o ano de fabricacao avião");
-                         ano_aviao = ler.nextInt();
-                         System.out.println("Informe o capacidade de passageiros do avião");
-                         capacidade_aviao_passageiros = ler.nextInt();
-                         System.out.println("Informe o modelo do avião");
-                         modelo_aviao = ler.next();
-                         
-                         aviao a = new aviao(id_aviao, modelo_aviao, ano_aviao, capacidade_aviao_passageiros);
-                         
-                        System.out.println("O avião cujo o identificador é: " + a.getId() + " foi cadastrado com sucesso!");
-                        System.out.println("Informacões do avião: ");
-                        System.out.println("Modelo: " + a.getModelo());
-                        System.out.println("Ano de fabricacão: " + a.getAno());
-                        System.out.println("Capacidade de passageiros: " + a.getCapacidade());
-                        System.out.println("Status: " + a.getAtivo());
-                         
-                         
-                        
-                    }else if(respostaGerente == 2){
-                        System.out.println("Alterar dados de  avião");
+                    System.out.println("9: Sair");
 
-                         
-                         
-                        
+                    
+                    respostaGerente = ler.nextInt();
+                    
+                    int repete = 0 ;
+                    if(respostaGerente == 1 ){
+                        do{
+                            g.cadastraAviao();
+                            System.out.println("Deseja cadastrar mais um avião? Digite 1 para sim e 2 para não");
+                            repete = ler.nextInt();
+                        }while(repete == 1);
+                    }else if(respostaGerente == 2){
+                        do{
+                            System.out.println("Alterar dados de aviao");
+                            System.out.println("Deseja alterar mais um avião? Digite 1 para sim e 2 para não");
+                            repete = ler.nextInt();
+                        }while(repete == 1);
                     }else if(respostaGerente == 3){
-                        System.out.println("Excluir avião");
-                        
+                        do{
+                            g.excluiAviao();
+                            System.out.println("Deseja excluir mais um avião? Digite 1 para sim e 2 para não");
+                            repete = ler.nextInt();
+                        }while(repete == 1);
                     }else if(respostaGerente == 4){
-                        int id_voo, time_saida_voo, time_chegada_voo;
-                        String destino_voo, origem_voo, status_voo;
-                        float preco_passagem;
-                        
-                        System.out.println("Cadastro de voo");
-                        System.out.println("Informe o id do voo");
-                        id_voo = ler.nextInt();
-                        System.out.println("Informe o data de saida");
-                        time_saida_voo = ler.nextInt();
-                        System.out.println("Informe o data de chegada");
-                        time_chegada_voo = ler.nextInt();
-                        System.out.println("Informe o origem do voo");
-                        origem_voo = ler.next();
-                        System.out.println("Informe o destino do voo");
-                        destino_voo = ler.next();
-                        System.out.println("Informe o status do voo");
-                        status_voo = ler.next();
-                        System.out.println("Informe o preco da passagem do voo");
-                        preco_passagem = ler.nextFloat();
-                        
-                        voos v = new voos(id_voo, destino_voo, origem_voo, status_voo, time_saida_voo, time_chegada_voo, preco_passagem );
-                        
-                        System.out.println("O voô cujo o identificador é: " + v.getId() + " foi cadastrado com sucesso!");
-                        System.out.println("Informacões do voo: ");
-                        System.out.println("Origem: " + v.getOrigem());
-                        System.out.println("Destino: " + v.getDestino());
-                        System.out.println("Data saída: " + v.getTime_saida());
-                        System.out.println("Data chegada: " + v.getTime_chegada());
-                        System.out.println("Preço base da passagem: " + v.getPreco_passagem());
-                        System.out.println("Status: " + v.getStatus());
-                        System.out.println("Ativo: " + v.getAtivo());
-                        
-                        
-                        
+                        do{
+                            g.cadastraVoo();
+                            System.out.println("Deseja cadastrar mais um voo? Digite 1 para sim e 2 para não");
+                            repete = ler.nextInt();
+                        }while(repete == 1);
                     }else if(respostaGerente == 5){
-                        System.out.println("Alterar dados de voo");
+                        do{
+                            System.out.println("Alterar dados de voo");
+                            System.out.println("Deseja alterar mais um voo? Digite 1 para sim e 2 para não");
+                            repete = ler.nextInt();
+                        }while(repete == 1);
                         
                     }else if(respostaGerente == 6){
-                        System.out.println("Excluir voo");
+                        do{
+                            g.excluiVoo();
+                            System.out.println("Deseja excluir mais um voo? Digite 1 para sim e 2 para não");
+                            repete = ler.nextInt();
+                        }while(repete == 1);
                         
                     }else if(respostaGerente == 7){
-                        System.out.println("Gerenciar funcionario");
-                        long cpf_funcionario;
-                        String email_funcionario, nome_funcionario, tarefa;
-                        int gerenteOUcliente_funcionario = 2;
+                        do{
+                            g.cadastraFuncionario();
+                            System.out.println("Deseja cadastrar mais um funcionario? Digite 1 para sim e 2 para não");
+                            repete = ler.nextInt();
+                        }while(repete == 1);
+                        
 
-                        
-                        System.out.println("Cadastro de funcionário");
-                        System.out.println("Informe o CPF do funcionário");
-                        cpf_funcionario = ler.nextLong();
-                        ler.nextLine();
-                        System.out.println("Informe o nome do funcionário");
-                        nome_funcionario = ler.nextLine();
-                        System.out.println("Informe o email do funcionário");
-                        email_funcionario = ler.next();
-                        System.out.println("Informe o tarefa do funcionário");
-                        tarefa = ler.next();
-                        
-                        funcionario f = new funcionario(cpf_funcionario, email_funcionario, nome_funcionario, gerenteOUcliente_funcionario, tarefa);
-                        
-                        System.out.println("O funcionario: " + f.getNome() + " foi cadastrado com sucesso!");
-                        System.out.println("Informacões do funcionario: ");
-                        System.out.println("CPF: " + f.getCPF());
-                        System.out.println("Email: " + f.getEmail());
-                        System.out.println("Tarefa: " + f.getTarefa());
-                        System.out.println("Permissão: " + f.getPermissao());
-
-                        
-                        
                     }else if(respostaGerente == 8){
-                        int tipoLista;
+                        do{
+                            g.geraRelatorio();
+                            System.out.println("Deseja gerar mais um relatorio? Digite 1 para sim e 2 para não");
+                            repete = ler.nextInt();
+                        }while(repete == 1);
                         
-                        System.out.println("Gerar Relatórios");
-                        System.out.println("1: Lista de todos aviões");
-                        System.out.println("2: Lista de todos voos");
-                        System.out.println("3: Lista de todos clientes");
-                        System.out.println("4: Lista de todos passageiros do voo X");
                         
-                        tipoLista = ler.nextInt();
-                        
-   
                     }else{
                         System.out.println("Opção inválida");
                     }
+                    
+                    
+                        
+                    }while(respostaGerente != 9);
+
+                    
 
                 }else if (respostaTipoUsuario == 2){
                     System.out.println("MENU");
@@ -208,5 +159,6 @@ public class Main {
       }while( respostaTipoAcao  !=2 && respostaTipoAcao  !=1);
   }            
 }
+
 
 
